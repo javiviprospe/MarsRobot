@@ -2,7 +2,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
-import utils.Robot;
+import utils.Commands.ParseCommand;
+import utils.Robot.Position;
+import utils.Robot.Robot;
 
 public class functionalWhole {
 
@@ -42,7 +44,38 @@ public class functionalWhole {
         assertEquals(robot.isOutOfGrid(),false);
         assertEquals(robot.getOrientation(),"S");
     }
+    @Test
+    public void parseRobot1(){
+        Robot robot = new Robot();
+        ParseCommand parseCommand = new ParseCommand(robot);
+        parseCommand.processGrid("5 3");
+        parseCommand.processPosition("1 1 E");
+        parseCommand.processMovement("RFRFRFRF");
+        System.out.println("Moved "+parseCommand.getRobot().getPosition()+" Lost? "+parseCommand.getRobot().isOutOfGrid()+" Position "+parseCommand.getRobot().getOrientation());
 
+    }
 
+    @Test
+    public void parseRobot2(){
+        Robot robot = new Robot();
+        ParseCommand parseCommand = new ParseCommand(robot);
+        parseCommand.processGrid("5 3");
+        parseCommand.processPosition("3 3 N");
+        parseCommand.processMovement("FRRFLLFFRRFLL");
+        System.out.println("Moved "+parseCommand.getRobot().getPosition()+" Lost? "+parseCommand.getRobot().isOutOfGrid()+" Position "+parseCommand.getRobot().getOrientation());
+
+    }
+
+    @Test
+    public void parseRobot3(){
+        Robot robot = new Robot();
+        ParseCommand parseCommand = new ParseCommand(robot);
+        parseCommand.processGrid("5 3");
+        parseCommand.processPosition("0 3 W");
+        parseCommand.processScent(new Position(2,3));
+        parseCommand.processMovement("LLFFFLFLFL");
+        System.out.println("Moved "+parseCommand.getRobot().getPosition()+" Lost? "+parseCommand.getRobot().isOutOfGrid()+" Position "+parseCommand.getRobot().getOrientation());
+
+    }
 
 }
