@@ -11,6 +11,9 @@ public class ParseCommand {
     private  final String patternMovement = "['L'|'R'|'F']*";
     private Robot robot;
 
+    public ParseCommand(){
+
+    }
     public ParseCommand(Robot robot){
         this.robot = robot;
     }

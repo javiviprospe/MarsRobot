@@ -28,10 +28,12 @@ public class functionalWhole {
             .changeOrientation("R").changeOrientation("R").moveOneStep().changeOrientation("L").changeOrientation("L");
 
 
-        System.out.println("Moved "+robot.getPosition()+" Lost? "+robot.isOutOfGrid()+" Position "+robot.getOrientation());
+        System.out.println("Moved "+robot.getPosition()+" Lost? "+robot.isOutOfGrid()+" Position "+robot.getOrientation()+" Scent "+robot.getPositionScent().getX()+" "+robot.getPositionScent().getY());
         assertEquals(robot.getPosition(),"3 3");
         assertEquals(robot.isOutOfGrid(),true);
         assertEquals(robot.getOrientation(),"N");
+        assertEquals(robot.getPositionScent().getX(), "3");
+        assertEquals(robot.getPositionScent().getY(),"4");
     }
     @Test
     public void setRobot3(){
@@ -62,7 +64,7 @@ public class functionalWhole {
         parseCommand.processGrid("5 3");
         parseCommand.processPosition("3 3 N");
         parseCommand.processMovement("FRRFLLFFRRFLL");
-        System.out.println("Moved "+parseCommand.getRobot().getPosition()+" Lost? "+parseCommand.getRobot().isOutOfGrid()+" Position "+parseCommand.getRobot().getOrientation());
+        System.out.println("Moved "+parseCommand.getRobot().getPosition()+" Lost? "+parseCommand.getRobot().isOutOfGrid()+" Position "+parseCommand.getRobot().getOrientation()+" Scent "+parseCommand.getRobot().getPositionScent().getX()+" "+parseCommand.getRobot().getPositionScent().getY());
 
     }
 
@@ -72,7 +74,7 @@ public class functionalWhole {
         ParseCommand parseCommand = new ParseCommand(robot);
         parseCommand.processGrid("5 3");
         parseCommand.processPosition("0 3 W");
-        parseCommand.processScent(new Position(2,3));
+        parseCommand.processScent(new Position(3,3));
         parseCommand.processMovement("LLFFFLFLFL");
         System.out.println("Moved "+parseCommand.getRobot().getPosition()+" Lost? "+parseCommand.getRobot().isOutOfGrid()+" Position "+parseCommand.getRobot().getOrientation());
 

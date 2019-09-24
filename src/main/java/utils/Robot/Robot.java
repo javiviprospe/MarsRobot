@@ -71,7 +71,7 @@ public class Robot {
     public Robot moveOneStep(){
         if (!outOfGrid) {
             Position positionPotential = (Position) this.moveRobot.interactCoord(this.positionCurrent.getOrientation(), this.positionCurrent);
-            if (positionCurrent.getX() == positionScent.getX() && positionCurrent.getY() == positionCurrent.getY())
+            if (positionPotential.getX() == positionScent.getX() && positionPotential.getY() == positionScent.getY())
             {
                 //do nothing
             }
@@ -82,7 +82,7 @@ public class Robot {
                 positionCurrent.setY(positionPotential.getY());
             } else {
                 this.outOfGrid = true;
-                this.positionScent = positionCurrent;
+                this.setPositionScent( positionPotential.getX(),positionPotential.getY());
             }
         }
         return this;
@@ -97,10 +97,8 @@ public class Robot {
     }
 
     public String getOrientation(){
-        if (outOfGrid)
-            return positionScent.getOrientation();
-        else
             return positionCurrent.getOrientation();
+
     }
     public boolean isOutOfGrid(){
         return this.outOfGrid;
