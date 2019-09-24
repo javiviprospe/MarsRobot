@@ -13,13 +13,17 @@ public class Robot {
     private InteractOrientation turnLeft;
     private InteractOrientation turnRight;
     private InteractionPosition moveRobot;
+    private final int outOfBound = -51;
 
     public Robot(){
         this.turnLeft = new TurnLeft();
         this.turnRight = new TurnRight();
         this.moveRobot = new MoveRobot();
         this.positionCurrent = new Position();
+        this.positionScent = new Position();
         this.outOfGrid = false;
+        this.positionScent.setY(this.outOfBound);
+        this.positionScent.setX(this.outOfBound);
     }
 
     public Robot setPositionCurrent(int x, int y){
@@ -38,11 +42,16 @@ public class Robot {
         return this;
     }
 
-    private Robot setPositionScent(int x, int y){
+    public Robot setPositionScent(int x, int y){
         this.positionScent = new Position(x,y);
         return this;
     }
 
+    /***
+     * Performs change of orientation in the grid(Left , Right)
+     * @param orientation N W S E
+     * @return new Orientation
+     */
     public Robot changeOrientation(String orientation){
         if (!outOfGrid) {
             String newOrientation = new String();
@@ -55,10 +64,20 @@ public class Robot {
         return this;
     }
 
+    /***
+     * Performs Robot movement. If scent is sent and current position is that one, do not nothing.
+     * Else if it's under boundaries, doit. Else It's out and scent is marked;
+     * @return this
+     */
     public Robot moveOneStep(){
         if (!outOfGrid) {
             Position positionPotential = (Position) this.moveRobot.interactCoord(this.positionCurrent.getOrientation(), this.positionCurrent);
-            if (positionPotential.getX() <= positionBoundaries.getX() && positionPotential.getY() <= positionBoundaries.getY()
+            if (positionCurrent.getX() == positionScent.getX() && positionCurrent.getY() == positionCurrent.getY())
+            {
+                //do nothing
+            }
+            else if (positionPotential.getX() <= positionBoundaries.getX()
+                && positionPotential.getY() <= positionBoundaries.getY()
                 && positionPotential.getX() != -1 && positionPotential.getY() != -1) {
                 positionCurrent.setX(positionPotential.getX());
                 positionCurrent.setY(positionPotential.getY());
@@ -71,10 +90,11 @@ public class Robot {
 
     }
     public String getPosition(){
-        if (outOfGrid)
-            return this.positionScent.getX()+" "+this.positionScent.getY();
-        else
             return this.positionCurrent.getX()+" "+this.positionCurrent.getY();
+    }
+
+    public Position getPositionScent(){
+        return this.positionScent;
     }
 
     public String getOrientation(){
