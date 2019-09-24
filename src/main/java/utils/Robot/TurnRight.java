@@ -1,21 +1,18 @@
-package utils;
+package utils.Robot;
 
 import utils.interfaces.InteractOrientation;
 
-public class TurnLeft implements InteractOrientation<Position> {
-
-    public TurnLeft(){
-    }
+public class TurnRight implements InteractOrientation<Position> {
 
     public String performOrientation(Position p) {
         String newOrientation = new String("");
-        if (p.getOrientation().equals("N"))
+        if (p.getOrientation().equals("S"))
             newOrientation = "W";
-        else if (p.getOrientation().equals("S"))
+        else if (p.getOrientation().equals("N"))
             newOrientation = "E";
-        else if (p.getOrientation().equals("E"))
-            newOrientation = "N";
         else if (p.getOrientation().equals("W"))
+            newOrientation = "N";
+        else if (p.getOrientation().equals("E"))
             newOrientation = "S";
         else
             newOrientation = "";

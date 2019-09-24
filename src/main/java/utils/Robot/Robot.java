@@ -1,6 +1,5 @@
-package utils;
+package utils.Robot;
 
-import javafx.geometry.Pos;
 import utils.interfaces.InteractOrientation;
 import utils.interfaces.InteractionPosition;
 
