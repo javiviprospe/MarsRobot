@@ -12,6 +12,8 @@ Extension of this project:
 * Make error management for input (currently there's no error checking for wrong formatted instructions)
 * Make ParseInstructions cleaner, alowwing to detect blocks of instructions in a better way
 * Make commandLine reader
+* Inject commands "turnLeft, turnRight, moveRobot" to Robot class dynamically instead of calling them inside the constructor (It would decouple the
+    class from its behavior a little bit more, but I've chosen the current way for readability purposes)
 * It's made by windows. Beware of linux compatibility
 
 
