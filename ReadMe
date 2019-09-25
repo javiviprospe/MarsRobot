@@ -1,12 +1,12 @@
 README :
 
-Run
+##Run
 
 - Go to Main class : **MoveRobotFromFile**
 - Edit file path (use \resource\inputFile.txt as an example). Path **is relative** to the project root
 
 
-Extension of this project:
+##Extension of this project:
 
 - Static class for those which don't require any state (TurnLeft, TurnRight, Move)
 - Make ParseCommand methods (processGrid,parseCommand,processPosition) to implement InteractionCommand interface
