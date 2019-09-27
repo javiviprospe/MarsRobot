@@ -36,9 +36,7 @@ public class ParseCommands {
         return this.processMovement;
     }
 
-    public InteractionCommand getProcessPosition(){
-        return this.getProcessPosition();
-    }
+    public InteractionCommand getProcessPosition(){ return this.processPosition; }
 
     public void processScent(Position p){
         if (p.getX()>0&&p.getY()>0)
